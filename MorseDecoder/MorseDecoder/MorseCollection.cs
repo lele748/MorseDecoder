@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MorseDecoder
 {
@@ -59,12 +55,19 @@ namespace MorseDecoder
 
         }
 
-        public char GetChar(string morseCode)
+        public string GetChar(string morseCode)
         {
-            if (this.Morse.ContainsKey(morseCode))
-                return this.Morse[morseCode];
+            string result = string.Empty;
 
-            return '|';
+            if (!string.IsNullOrEmpty(morseCode))
+            {
+                if (this.Morse.ContainsKey(morseCode))
+                    result = this.Morse[morseCode].ToString();
+                else
+                   result = "~";
+            }
+
+            return result;
         }
     }
 }

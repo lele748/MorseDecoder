@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MorseDecoder
 {
@@ -12,8 +8,17 @@ namespace MorseDecoder
         {
             if (args != null && args.Length > 0)
             {
-                foreach (string arg in args)
-                    Console.WriteLine(CodeDecorer.Decode(arg));
+                if (args[0].StartsWith("\'"))
+                    Console.WriteLine("## ATTENTION ##\r\nInvalid input. Please use the \" character to concatenate more words.");
+                else
+                {
+                    string result = string.Empty;
+
+                    foreach (string word in StringNormalizer.Normalize(args))
+                        result += CodeDecorer.DecodeWord(word);
+
+                    Console.WriteLine(result);
+                }
             }
             else
             {
