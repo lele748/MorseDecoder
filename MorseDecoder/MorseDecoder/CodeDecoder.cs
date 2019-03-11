@@ -25,5 +25,25 @@ namespace MorseDecoder
 
             return result;
         }
+
+        public static string EncodeWord(string realWord)
+        {
+            string result = string.Empty;
+
+            if (Regex.IsMatch(realWord, @"^[a-zA-Z0-9]+$"))
+            {
+                string[] letters = realWord.Split(' ');
+
+                MorseCollection mc = new MorseCollection();
+
+                foreach (string letter in letters)
+                {
+                    result += mc.GetMorse(letter);
+                    result += " ";
+                }
+            }
+
+            return result;
+        }
     }
 }

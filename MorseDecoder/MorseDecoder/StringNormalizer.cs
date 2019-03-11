@@ -26,5 +26,17 @@ namespace MorseDecoder
 
             return results;
         }
+
+        public static List<string> Normalize(string arg)
+        {
+            List<string> results = new List<string>();
+
+            char[] chars = arg.ToCharArray();
+
+            foreach (char c in chars)
+                results.Add(c.ToString());
+
+            return results;
+        }
     }
 }

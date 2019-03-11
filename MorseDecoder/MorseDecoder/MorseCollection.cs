@@ -69,5 +69,26 @@ namespace MorseDecoder
 
             return result;
         }
+
+        public string GetMorse(string morseCode)
+        {
+            string result = string.Empty;
+
+            if (!morseCode.Equals(' '))
+            {
+                result = "~";
+
+                foreach (KeyValuePair<string, char> m in this.Morse)
+                {
+                    if (m.Value.Equals(morseCode.ToUpper().ToCharArray()[0]))
+                    {
+                        result = m.Key;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }
