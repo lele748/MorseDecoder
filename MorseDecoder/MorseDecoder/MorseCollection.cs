@@ -57,14 +57,12 @@ namespace MorseDecoder
 
         public string GetChar(string morseCode)
         {
-            string result = string.Empty;
+            string result = "~";
 
             if (!string.IsNullOrEmpty(morseCode))
             {
                 if (this.Morse.ContainsKey(morseCode))
                     result = this.Morse[morseCode].ToString();
-                else
-                   result = "~";
             }
 
             return result;
@@ -72,12 +70,10 @@ namespace MorseDecoder
 
         public string GetMorse(string morseCode)
         {
-            string result = string.Empty;
+            string result = "~";
 
             if (!morseCode.Equals(' '))
             {
-                result = "~";
-
                 foreach (KeyValuePair<string, char> m in this.Morse)
                 {
                     if (m.Value.Equals(morseCode.ToUpper().ToCharArray()[0]))
